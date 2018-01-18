@@ -27,7 +27,7 @@ prompt APPLICATION 87886 - GreatIdeas
 -- Application Export:
 --   Application:     87886
 --   Name:            GreatIdeas
---   Date and Time:   13:03 Wednesday January 10, 2018
+--   Date and Time:   13:11 Thursday January 18, 2018
 --   Exported By:     PAREIS.PINDORIA@LEGALAID.GSI.GOV.UK
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -122,7 +122,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_02=>'APP_FAVICONS'
 ,p_substitution_value_02=>'#APP_IMAGES#Capture.PNG'
 ,p_last_updated_by=>'CHARLES.BOARDMAN@LEGALAID.GSI.GOV.UK'
-,p_last_upd_yyyymmddhh24miss=>'20180110125547'
+,p_last_upd_yyyymmddhh24miss=>'20180116151443'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>11
 ,p_ui_type_name => null
@@ -25420,7 +25420,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'CHARLES.BOARDMAN@LEGALAID.GSI.GOV.UK'
-,p_last_upd_yyyymmddhh24miss=>'20180110125547'
+,p_last_upd_yyyymmddhh24miss=>'20180116151443'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41093090251638856592)
@@ -27011,8 +27011,8 @@ wwv_flow_api.create_page_validation(
 ,p_error_message=>'Please fill in at least one post measurement'
 ,p_always_execute=>'N'
 ,p_validation_condition=>'P15_CURRENT_STATUS'
-,p_validation_condition2=>'Interim Benefits'
-,p_validation_condition_type=>'VAL_OF_ITEM_IN_COND_EQ_COND2'
+,p_validation_condition2=>'Interim Benefits:Benefits Realised'
+,p_validation_condition_type=>'VALUE_OF_ITEM_IN_CONDITION_IN_COLON_DELIMITED_LIST'
 ,p_when_button_pressed=>wwv_flow_api.id(16982734027951409883)
 ,p_error_display_location=>'INLINE_WITH_FIELD_AND_NOTIFICATION'
 );
