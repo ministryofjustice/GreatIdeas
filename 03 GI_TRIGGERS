@@ -57,9 +57,7 @@ BEGIN
       :NEW."LAST_UPDATE_DATE" := SYSDATE;
    end if;
 
-END;/
-ALTER TRIGGER  "BI_GI_COMMENTS” ENABLE
-/
+END;
 
 
 
@@ -345,19 +343,3 @@ BEGIN
       :NEW."LAST_UPDATE_DATE" := SYSDATE;
    end if;
 END;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
