@@ -14,13 +14,13 @@ SELECT USER_NAME INTO USERNAME FROM GI_USERS WHERE UPPER(NAME) = UPPER(USER_NAME
 
 SELECT ROLE_ID INTO ROLEID FROM GI_USERS WHERE UPPER(USERNAME) = UPPER(USER_NAME);
 
-IF ROLEID = ROLE THEN RETURN TRUE; 
+IF ROLEID = ROLE THEN RETURN TRUE;
 ELSE RETURN FALSE;
 END IF;
 
 END;
 
-####################################################
+
 ---gi_generate_code
 
 create or replace FUNCTION gi_generate_code
@@ -31,7 +31,7 @@ BEGIN
 code := DBMS_RANDOM.string('x',10);
 RETURN code;
 END;
-###################################################
+
 ---gi_getmd5
 
 create or replace function gi_getMD5(
@@ -46,7 +46,7 @@ begin
   -- return hex version (32 length)
   return rawtohex(out_raw);
 end;
-#########################################################
+
 ---gi_user_validate_fnc
 
 create or replace FUNCTION gi_user_validate_fnc (
@@ -71,7 +71,7 @@ EXCEPTION
  THEN
  RETURN FALSE;
 END gi_user_validate_fnc;
-################################################################
+
 --CURRENT_STATUS
 
 create or replace FUNCTION CURRENT_STATUS(TEXT IN VARCHAR2)
