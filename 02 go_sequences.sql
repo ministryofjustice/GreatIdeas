@@ -86,3 +86,13 @@ CREATE SEQUENCE GI_USERS_SEQ
        NOCYCLE
         NOCACHE
        NOORDER;
+
+
+       
+       CREATE SEQUENCE GI_ROLES_SEQ
+           START WITH 1
+           MAXVALUE 99999999999999999999999999
+              MINVALUE 1
+             NOCYCLE
+              NOCACHE
+             NOORDER;

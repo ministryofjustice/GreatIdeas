@@ -7,7 +7,7 @@ ln_user_id            NUMBER;
 BEGIN
    -- get user_id from function
    ln_user_id := 1;
-   if :NEW.”BA_ID" is null then
+   if :NEW.BA_ID is null then
       select GI_BUSINESS_AREAS_SEQ.nextval into :NEW.BA_ID from dual;
    end if;
     if :NEW."CREATION_DATE" is null then
@@ -89,9 +89,6 @@ BEGIN
       :NEW."LAST_UPDATE_DATE" := SYSDATE;
    end if;
 END;
-/
-ALTER TRIGGER  "BI_DIRECTORATE” ENABLE
-/
 
 
 
@@ -123,9 +120,6 @@ BEGIN
       :NEW."LAST_UPDATE_DATE" := SYSDATE;
    end if;
 END;
-/
-ALTER TRIGGER  "BI_GI_IDEAS” ENABLE
-/
 
 
 CREATE OR REPLACE  TRIGGER  BI_GI_IT_SYSTEMS
