@@ -27,7 +27,7 @@ prompt APPLICATION 87886 - GreatIdeas
 -- Application Export:
 --   Application:     87886
 --   Name:            GreatIdeas
---   Date and Time:   13:11 Thursday January 18, 2018
+--   Date and Time:   15:40 Wednesday January 31, 2018
 --   Exported By:     PAREIS.PINDORIA@LEGALAID.GSI.GOV.UK
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -37,7 +37,7 @@ prompt APPLICATION 87886 - GreatIdeas
 
 -- Application Statistics:
 --   Pages:                     45
---     Items:                  334
+--     Items:                  335
 --     Validations:            123
 --     Processes:               66
 --     Regions:                120
@@ -122,7 +122,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_02=>'APP_FAVICONS'
 ,p_substitution_value_02=>'#APP_IMAGES#Capture.PNG'
 ,p_last_updated_by=>'CHARLES.BOARDMAN@LEGALAID.GSI.GOV.UK'
-,p_last_upd_yyyymmddhh24miss=>'20180116151443'
+,p_last_upd_yyyymmddhh24miss=>'20180131153900'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>11
 ,p_ui_type_name => null
@@ -25420,7 +25420,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'CHARLES.BOARDMAN@LEGALAID.GSI.GOV.UK'
-,p_last_upd_yyyymmddhh24miss=>'20180116151443'
+,p_last_upd_yyyymmddhh24miss=>'20180131153900'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41093090251638856592)
@@ -25898,7 +25898,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(16982710878754409869)
 ,p_name=>'P15_CURRENT_STATUS'
-,p_item_sequence=>30
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_api.id(41890634838737679085)
 ,p_use_cache_before_default=>'NO'
 ,p_prompt=>'<h5>Current Status</h5>'
@@ -25941,7 +25941,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(16982711298642409869)
 ,p_name=>'P15_ALLOCATED_TO'
-,p_item_sequence=>40
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_api.id(41890634838737679085)
 ,p_use_cache_before_default=>'NO'
 ,p_prompt=>'<h5>Allocated To</h5>'
@@ -25972,7 +25972,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(16982711647330409870)
 ,p_name=>'P15_PARTICIPATION_LEVEL'
-,p_item_sequence=>50
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_api.id(41890634838737679085)
 ,p_use_cache_before_default=>'NO'
 ,p_prompt=>'<h5>Participation Level</h5>'
@@ -25999,7 +25999,7 @@ wwv_flow_api.create_page_item(
 wwv_flow_api.create_page_item(
  p_id=>wwv_flow_api.id(16982712074705409870)
 ,p_name=>'P15_REVIEW_DATE'
-,p_item_sequence=>60
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_api.id(41890634838737679085)
 ,p_use_cache_before_default=>'NO'
 ,p_prompt=>'<h5>Review Date</h5>'
@@ -26843,7 +26843,7 @@ wwv_flow_api.create_page_item(
 'FROM',
 '    GI_USERS',
 'WHERE',
-'    USER_NAME = :app_user'))
+'    UPPER(USER_NAME) = UPPER(:app_user)'))
 ,p_source_type=>'QUERY'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_attribute_01=>'Y'
@@ -26860,10 +26860,22 @@ wwv_flow_api.create_page_item(
 'FROM',
 '    GI_USERS',
 'WHERE',
-'    USER_NAME = :app_user'))
+'    UPPER(USER_NAME) = UPPER(:app_user)'))
 ,p_source_type=>'QUERY'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_attribute_01=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(42766120889103025604)
+,p_name=>'P15_APP_USER_X'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(41890634838737679085)
+,p_use_cache_before_default=>'NO'
+,p_source=>':app_user'
+,p_source_type=>'FUNCTION'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
+,p_item_comment=>'This field is for debugging purposes. Delete or make hidden before pushing to live.'
 );
 wwv_flow_api.create_page_validation(
  p_id=>wwv_flow_api.id(16982745278830409899)
@@ -27327,6 +27339,9 @@ wwv_flow_api.create_page_da_action(
 ,p_affected_elements=>'P15_REVIEW_DATE'
 ,p_stop_execution_on_error=>'Y'
 );
+end;
+/
+begin
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(17212878259218340601)
 ,p_event_id=>wwv_flow_api.id(16982757322106409910)
@@ -27349,9 +27364,6 @@ wwv_flow_api.create_page_da_event(
 ,p_bind_type=>'live'
 ,p_bind_event_type=>'change'
 );
-end;
-/
-begin
 wwv_flow_api.create_page_da_action(
  p_id=>wwv_flow_api.id(20227644645939089816)
 ,p_event_id=>wwv_flow_api.id(20227642406231089809)
