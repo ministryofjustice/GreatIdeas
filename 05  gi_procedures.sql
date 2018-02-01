@@ -11,10 +11,7 @@ INSERT INTO GI_USERS (user_name, first_name, last_name, creation_date, start_dat
 
 VALUES (UPPER(username), INITCAP(firstname), INITCAP(lastname), SYSDATE, SYSDATE, SYSDATE,  gi_getMD5(UPPER(e) || upper(email)), 0, UPPER(email), phoneNum, directorate, businessArea, UPPER(businessAreaOther), team, UPPER(teamOther), office,1,1,1);
 
-
-
 b := INITCAP(firstname) || ' ' || INITCAP(lastname) || '.<p> Welcome to Great Idea, your temporary password is: ' || UPPER(e) || '</p><p>You will be asked to change your password when you log in.</p>';
-
 
 l_body_html := '<p>Hello ' || b || '</p>';
 
