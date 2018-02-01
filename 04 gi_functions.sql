@@ -19,7 +19,10 @@ ELSE RETURN FALSE;
 END IF;
 
 END;
-/
+
+
+---gi_generate_code
+
 create or replace FUNCTION gi_generate_code
 RETURN varchar2
 AS
@@ -28,7 +31,9 @@ BEGIN
 code := DBMS_RANDOM.string('x',10);
 RETURN code;
 END;
-/
+
+---gi_getmd5
+
 create or replace function gi_getMD5(
   in_string in varchar2)
 return varchar2
@@ -41,7 +46,9 @@ begin
   -- return hex version (32 length)
   return rawtohex(out_raw);
 end;
-/
+
+---gi_user_validate_fnc
+
 create or replace FUNCTION gi_user_validate_fnc (
  p_username IN VARCHAR2, --User_Name
  p_password IN VARCHAR2 -- Password
@@ -64,7 +71,9 @@ EXCEPTION
  THEN
  RETURN FALSE;
 END gi_user_validate_fnc;
-/
+
+--CURRENT_STATUS
+
 create or replace FUNCTION CURRENT_STATUS(TEXT IN VARCHAR2)
 RETURN NUMBER
 IS
