@@ -203,6 +203,35 @@ BEGIN
    end if;
 END;
 /
+CREATE OR REPLACE  TRIGGER  BI_GI_STATUS_HISTORY
+BEFORE INSERT ON GI_STATUS_HISTORY
+FOR EACH ROW
+DECLARE
+ln_user_id            NUMBER;
+
+BEGIN
+   -- get user_id from function
+   ln_user_id := 1;
+   if :NEW.STAT_HIS_ID is null then
+      select GI_STATUS_HISTORY_SEQ.nextval into :NEW.STAT_HIS_ID from dual;
+   end if;
+    if :NEW."CREATION_DATE" is null then
+      :NEW."CREATION_DATE" := SYSDATE;
+   end if;
+
+   if :NEW."CREATED_BY" is null then
+      :NEW."CREATED_BY" := ln_user_id;
+   end if;
+
+    if :NEW."LAST_UPDATED_BY" is null then
+      :NEW."LAST_UPDATED_BY" := ln_user_id;
+   end if;
+
+   if :NEW."LAST_UPDATE_DATE" is null then
+      :NEW."LAST_UPDATE_DATE" := SYSDATE;
+   end if;
+END;
+/
 CREATE OR REPLACE TRIGGER  BI_GI_USER_ROLES
 BEFORE INSERT ON GI_ROLES
 FOR EACH ROW
