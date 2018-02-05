@@ -27,7 +27,7 @@ prompt APPLICATION 87886 - GreatIdeas
 -- Application Export:
 --   Application:     87886
 --   Name:            GreatIdeas
---   Date and Time:   15:40 Wednesday January 31, 2018
+--   Date and Time:   15:52 Monday February 5, 2018
 --   Exported By:     PAREIS.PINDORIA@LEGALAID.GSI.GOV.UK
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -122,7 +122,7 @@ wwv_flow_api.create_flow(
 ,p_substitution_string_02=>'APP_FAVICONS'
 ,p_substitution_value_02=>'#APP_IMAGES#Capture.PNG'
 ,p_last_updated_by=>'CHARLES.BOARDMAN@LEGALAID.GSI.GOV.UK'
-,p_last_upd_yyyymmddhh24miss=>'20180131153900'
+,p_last_upd_yyyymmddhh24miss=>'20180131154817'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>11
 ,p_ui_type_name => null
@@ -25420,7 +25420,7 @@ wwv_flow_api.create_page(
 ,p_page_is_public_y_n=>'N'
 ,p_cache_mode=>'NOCACHE'
 ,p_last_updated_by=>'CHARLES.BOARDMAN@LEGALAID.GSI.GOV.UK'
-,p_last_upd_yyyymmddhh24miss=>'20180131153900'
+,p_last_upd_yyyymmddhh24miss=>'20180131154817'
 );
 wwv_flow_api.create_page_plug(
  p_id=>wwv_flow_api.id(41093090251638856592)
@@ -26871,7 +26871,12 @@ wwv_flow_api.create_page_item(
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_api.id(41890634838737679085)
 ,p_use_cache_before_default=>'NO'
-,p_source=>':app_user'
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'/*',
+'This field simply displays whatever '':app_user'' returns which should be',
+'the email adress of the current user who is logged into the app',
+'*/',
+':app_user'))
 ,p_source_type=>'FUNCTION'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_attribute_01=>'Y'
